@@ -1,3 +1,1 @@
-#code-motivator
-
-una extencion para vsc
+extencion para vsc

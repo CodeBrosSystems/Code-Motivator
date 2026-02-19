@@ -1,7 +1,7 @@
 const vscode = require('vscode');
 
 function activate(context) {
-    console.log('🚀 Code Motivator está activo!');
+    console.log('Code Motivator está activo!');
 
     // ====== COMANDO MANUAL ======
     let motivateCommand = vscode.commands.registerCommand('code-motivator.motivate', function () {
@@ -12,7 +12,7 @@ function activate(context) {
             '⚡ El bug no tiene chance contra ti',
             '🎯 Focus mode: ACTIVATED',
             '🌟 Tu código es arte',
-            '☕ ¿Break? Nah, sigamos programando',
+            '💻 Tu puedes osiosi',
             '🦾 Debugging = Ser detective',
             '💻 Hoy serás imparable',
             '🎨 El código limpio es poesía'

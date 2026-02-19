@@ -3,15 +3,34 @@
   "displayName": "Code Motivator",
   "description": "Mensajes motivacionales mientras programas 🚀",
   "version": "0.0.1",
+  "publisher": "NachoOFC",
+  "author": {
+    "name": "Ignacio Perez"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CodeBrosSystems/Code-Motivator"
+  },
+  "license": "MIT",
+  "icon": "icon.png",
   "engines": {
     "vscode": "^1.109.0"
   },
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "keywords": [
+    "motivation",
+    "productivity",
+    "fun",
+    "mensajes",
+    "español"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "main": "./extension.js",
-    "contributes": {
+  "contributes": {
     "commands": [
       {
         "command": "code-motivator.motivate",
@@ -24,7 +43,17 @@
         "key": "ctrl+shift+m",
         "mac": "cmd+shift+m"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Code Motivator",
+      "properties": {
+        "codeMotivator.messageInterval": {
+          "type": "number",
+          "default": 300000,
+          "description": "Interval in milliseconds between motivational messages"
+        }
+      }
+    }
   },
   "scripts": {
     "lint": "eslint .",

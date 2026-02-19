@@ -1,2 +1,3 @@
-# demo
-repo demo
+#code-motivator
+
+una extencion para vsc

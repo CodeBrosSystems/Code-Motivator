@@ -1,31 +1,33 @@
 {
   "name": "code-motivator",
   "displayName": "Code Motivator",
-  "description": "Mensajes motivacionales mientras programas 🚀",
-  "version": "0.0.1",
+   "description": "Mantente motivado mientras programas con mensajes inspiradores y seguimiento de productividad en tiempo real",
+  "version": "0.0.2",
   "publisher": "nacho-ofc",
-  "author": {
-    "name": "Ignacio Perez"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/CodeBrosSystems/Code-Motivator"
   },
+  "keywords": [
+    "motivacion",
+    "productividad",
+    "inspiracion",
+    "notificaciones",
+    "diversion",
+    "español",
+    "latinoamerica",
+    "herramientas"
+  ],
   "license": "MIT",
   "icon": "icon.png",
   "engines": {
     "vscode": "^1.109.0"
   },
   "categories": [
-    "Other"
+    "Other",
+    "Education"
   ],
-  "keywords": [
-    "motivation",
-    "productivity",
-    "fun",
-    "mensajes",
-    "español"
-  ],
+ 
   "activationEvents": [
     "onStartupFinished"
   ],

@@ -4,26 +4,33 @@
 
 ## ✨ ¿Qué hace?
 
-- 💬 **Mensajes motivacionales random** - Para cuando necesitas ese boost
-- 📊 **Contador de líneas en vivo** - Mira tu progreso en tiempo real
-- ⚡ **Atajo rápido** - `Ctrl+Shift+M` y listo
-- 🎯 **Celebra tus logros** - Notificación automática cada 50 líneas
+- 💬 **Mensajes motivacionales manuales y automáticos** - Para cuando necesitas ese boost
+- 📊 **Contador de líneas añadidas en vivo** - Mira tu progreso real en la sesión
+- ⚡ **Atajo rápido** - `Ctrl+Alt+M` o `Cmd+Alt+M`
+- 🎯 **Celebra tus logros** - Notificación automática cada 50 líneas añadidas
+- ⚙️ **Intervalo configurable** - Ajusta cada cuánto aparecen mensajes automáticos
 
 ## 🚀 ¿Cómo se usa?
 
 Super simple:
 
 1. Instala la extensión (obvio)
-2. Apreta `Ctrl+Shift+M` cuando necesites motivación
-3. O solo programa y deja que la extensión haga su magia cada 50 líneas
+2. Apreta `Ctrl+Alt+M` cuando necesites motivación
+3. O solo programa y deja que la extensión haga su magia con mensajes automáticos y celebraciones cada 50 líneas añadidas
 
-**Pro tip:** También funciona con `Cmd+Shift+M` si estás en Mac
+**Pro tip:** En Mac usa `Cmd+Alt+M`
 
 ## ⌨️ Atajos de teclado
 
 | Acción | Windows/Linux | Mac |
 |--------|--------------|-----|
-| Motivación instantánea | `Ctrl+Shift+M` | `Cmd+Shift+M` |
+| Motivación instantánea | `Ctrl+Alt+M` | `Cmd+Alt+M` |
+
+## ⚙️ Configuración
+
+| Ajuste | Descripción | Valor por defecto |
+|--------|-------------|-------------------|
+| `codeMotivator.messageInterval` | Intervalo en milisegundos entre mensajes automáticos | `300000` |
 
 ## 💡 ¿Por qué Code Motivator?
 

@@ -6,4 +6,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
-- Initial release
+- Corrige el contador para medir líneas añadidas reales en la sesión.
+- Activa mensajes automáticos usando `codeMotivator.messageInterval`.
+- Cambia el atajo por defecto para evitar conflictos con VS Code.
+- Añade pruebas reales para la lógica principal de la extensión.

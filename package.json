@@ -42,8 +42,9 @@
     "keybindings": [
       {
         "command": "code-motivator.motivate",
-        "key": "ctrl+shift+m",
-        "mac": "cmd+shift+m"
+        "key": "ctrl+alt+m",
+        "mac": "cmd+alt+m",
+        "when": "editorTextFocus"
       }
     ],
     "configuration": {
@@ -52,7 +53,8 @@
         "codeMotivator.messageInterval": {
           "type": "number",
           "default": 300000,
-          "description": "Interval in milliseconds between motivational messages"
+          "minimum": 1000,
+          "description": "Intervalo en milisegundos entre mensajes motivacionales automáticos"
         }
       }
     }
@@ -68,6 +70,7 @@
     "@types/node": "22.x",
     "eslint": "^9.39.2",
     "@vscode/test-cli": "^0.0.12",
-    "@vscode/test-electron": "^2.5.2"
+    "@vscode/test-electron": "^2.5.2",
+    "globals": "^14.0.0"
   }
 }

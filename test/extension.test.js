@@ -20,6 +20,31 @@ suite("Extension Test Suite", () => {
     assert.strictEqual(message, __testing.MESSAGES[0]);
   });
 
+  test("renders motivational messages in the temporary status bar", () => {
+    const statusBarItem = {
+      text: "",
+      tooltip: "",
+      visible: false,
+      show() {
+        this.visible = true;
+      },
+      hide() {
+        this.visible = false;
+      },
+    };
+
+    const presentMessage = __testing.createTemporaryStatusMessagePresenter(
+      statusBarItem,
+      1000,
+    );
+
+    presentMessage("Mensaje bonito");
+
+    assert.strictEqual(statusBarItem.text, "$(sparkle) Mensaje bonito");
+    assert.strictEqual(statusBarItem.tooltip, "Code Motivator");
+    assert.strictEqual(statusBarItem.visible, true);
+  });
+
   test("tracks only added lines across document changes", () => {
     const document = createDocument("file://demo.txt", 2);
     const tracker = __testing.createSessionTracker([document]);

@@ -5,6 +5,7 @@ const CONFIG_SECTION = "codeMotivator";
 const MESSAGE_INTERVAL_KEY = "messageInterval";
 const CELEBRATION_STEP = 50;
 const DEFAULT_MESSAGE_INTERVAL = 300000;
+const MOTIVATION_MESSAGE_DURATION = 8000;
 
 const MESSAGES = [
   "🔥 ¡Vas increíble! Sigue así",
@@ -123,9 +124,33 @@ function updateStatusBar(statusBarItem, totalAddedLines) {
   statusBarItem.text = `$(rocket) ${totalAddedLines} líneas añadidas`;
 }
 
-function showMotivationalMessage(window = vscode.window, random = Math.random) {
+function createTemporaryStatusMessagePresenter(statusBarItem, duration = MOTIVATION_MESSAGE_DURATION) {
+  /** @type {NodeJS.Timeout | undefined} */
+  let resetTimer;
+
+  return (message) => {
+    if (resetTimer) {
+      clearTimeout(resetTimer);
+    }
+
+    statusBarItem.text = `$(sparkle) ${message}`;
+    statusBarItem.tooltip = "Code Motivator";
+    statusBarItem.show();
+
+    resetTimer = setTimeout(() => {
+      statusBarItem.hide();
+      resetTimer = undefined;
+    }, duration);
+  };
+}
+
+function showMotivationalMessage(
+  showMessage,
+  random = Math.random,
+) {
   const message = getRandomMessage(random);
-  return window.showInformationMessage(message);
+  showMessage(message);
+  return message;
 }
 
 function activate(context) {
@@ -140,6 +165,17 @@ function activate(context) {
   updateStatusBar(statusBarItem, sessionTracker.getTotalAddedLines());
   statusBarItem.show();
 
+  const motivationStatusBarItem = vscode.window.createStatusBarItem(
+    vscode.StatusBarAlignment.Right,
+    100,
+  );
+  motivationStatusBarItem.command = MOTIVATE_COMMAND;
+  motivationStatusBarItem.tooltip = "Mostrar otro mensaje motivacional";
+
+  const presentMotivationMessage = createTemporaryStatusMessagePresenter(
+    motivationStatusBarItem,
+  );
+
   let motivationalTimer;
 
   const restartMotivationalTimer = () => {
@@ -150,12 +186,12 @@ function activate(context) {
 
     const interval = getConfiguredInterval();
     motivationalTimer = setInterval(() => {
-      void showMotivationalMessage();
+      showMotivationalMessage(presentMotivationMessage);
     }, interval);
   };
 
   const motivateCommand = vscode.commands.registerCommand(MOTIVATE_COMMAND, () => {
-    void showMotivationalMessage();
+    showMotivationalMessage(presentMotivationMessage);
   });
 
   const textDocumentChangeListener = vscode.workspace.onDidChangeTextDocument((event) => {
@@ -166,7 +202,7 @@ function activate(context) {
     updateStatusBar(statusBarItem, totalAddedLines);
 
     if (reachedCelebrationTarget) {
-      void vscode.window.showInformationMessage(
+      presentMotivationMessage(
         `🔥 ¡${totalAddedLines} líneas añadidas en esta sesión!`,
       );
     }
@@ -188,13 +224,14 @@ function activate(context) {
 
   restartMotivationalTimer();
 
-  void vscode.window.showInformationMessage(
+  presentMotivationMessage(
     "💪 Code Motivator activado. Usa Ctrl+Alt+M o Cmd+Alt+M para motivarte.",
   );
 
   context.subscriptions.push(
     motivateCommand,
     statusBarItem,
+    motivationStatusBarItem,
     textDocumentChangeListener,
     textDocumentOpenListener,
     textDocumentCloseListener,
@@ -203,6 +240,8 @@ function activate(context) {
       if (motivationalTimer) {
         clearInterval(motivationalTimer);
       }
+
+      motivationStatusBarItem.hide();
     }),
   );
 }
@@ -216,6 +255,8 @@ module.exports = {
     CELEBRATION_STEP,
     DEFAULT_MESSAGE_INTERVAL,
     MESSAGES,
+    MOTIVATION_MESSAGE_DURATION,
+    createTemporaryStatusMessagePresenter,
     createSessionTracker,
     getConfiguredInterval,
     getRandomMessage,

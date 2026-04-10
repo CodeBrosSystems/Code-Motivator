@@ -4,7 +4,7 @@
 
 ## ✨ ¿Qué hace?
 
-- 💬 **Mensajes motivacionales manuales y automáticos** - Para cuando necesitas ese boost
+- 💬 **Mensajes motivacionales manuales y automáticos** - Aparecen en la barra de estado, sin notificaciones invasivas
 - 📊 **Contador de líneas añadidas en vivo** - Mira tu progreso real en la sesión
 - ⚡ **Atajo rápido** - `Ctrl+Alt+M` o `Cmd+Alt+M`
 - 🎯 **Celebra tus logros** - Notificación automática cada 50 líneas añadidas
@@ -31,6 +31,10 @@ Super simple:
 | Ajuste | Descripción | Valor por defecto |
 |--------|-------------|-------------------|
 | `codeMotivator.messageInterval` | Intervalo en milisegundos entre mensajes automáticos | `300000` |
+
+## 🎨 Cómo se ven los mensajes
+
+Los mensajes motivacionales se muestran en la barra de estado derecha como un banner temporal. Así no interrumpen tu flujo con notificaciones en la esquina inferior derecha, y puedes hacer clic sobre el mensaje para pedir otro.
 
 ## 💡 ¿Por qué Code Motivator?
 
